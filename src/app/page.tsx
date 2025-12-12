@@ -99,92 +99,14 @@ export default function Home() {
             </div>
           </section>
 
-          {/* <section
-            id="selected-work"
-            aria-labelledby="work-title"
-            className="space-y-8 bg-gray-850 w-full"
-          >
-            <div className="w-full max-w-[1396px] mx-auto">
-              <div className="flex items-center gap-3">
-                <h2 id="work-title" className="text-lg font-semibold">
-                  Selected work
-                </h2>
-              </div>
-
-              <div
-                ref={stackRef}
-                className="relative isolate flex flex-col gap-0 pb-24"
-                style={{
-                  minHeight: stackMinHeight,
-                }}
-              >
-                {projects.map((project, index) => {
-                  const distanceBehind = Math.max(0, activeIndex - index);
-                  const scale =
-                    distanceBehind === 0
-                      ? 1
-                      : Math.max(MIN_SCALE, 1 - distanceBehind * SCALE_STEP);
-                  // show the "behind" cards ABOVE the active one
-                  const translateY = -distanceBehind * STACK_OFFSET;
-
-                  return (
-                    <button
-                      type="button"
-                      key={project.title}
-                      data-index={index}
-                      ref={(el) => {
-                        cardRefs.current[index] = el;
-                      }}
-                      onClick={() => {
-                        setSelectedProject(project);
-                        setSheetOpen(true);
-                      }}
-                      className="sticky cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-gray-750 text-left shadow-[0_25px_80px_-30px_rgba(0,0,0,0.8)] transition-transform duration-500 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white/20"
-                      style={{
-                        // all cards pause at the same position; offset is handled via transform
-                        top: STICKY_TOP,
-                        zIndex: projects.length + index,
-                        transform: `translateY(${translateY}px) scale(${scale})`,
-                        transformOrigin: "top center",
-                      }}
-                    >
-                      <div className="relative h-[360px] w-full bg-[#0f0f0f] sm:h-[460px] lg:h-[633px]">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          sizes="(min-width: 1024px) 1100px, 100vw"
-                          className="object-cover object-top"
-                        />
-                        <div className="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-[#0b0b0b] to-transparent" />
-                      </div>
-
-                      <div className="flex flex-col gap-2 text-white/80 p-4">
-                        <span className="text-xs uppercase tracking-[0.2em] text-white/50">
-                          {project.year}
-                        </span>
-                        <h3 className="text-xl font-semibold text-white">
-                          {project.title}
-                        </h3>
-                        <p className="max-w-3xl text-sm leading-relaxed">
-                          {project.description}
-                        </p>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </section> */}
-
           <Works />
 
-          <section
+          <footer
             id="contact"
             aria-labelledby="contact-title"
-            className="space-y-6 bg-gray-900"
+            className="space-y-6 bg-gray-900 min-h-100 flex items-center"
           >
-            <div className="flex flex-col w-full max-w-[1396px] mx-auto gap-4 pb-6 pt-4">
+            <div className="flex flex-col w-full max-w-349 mx-auto gap-4 pb-6 pt-4">
               <h2
                 id="contact-title"
                 className="text-xl font-semibold text-white"
@@ -213,7 +135,7 @@ export default function Home() {
                 />
               </div>
             </div>
-          </section>
+          </footer>
         </div>
       </main>
     </div>
