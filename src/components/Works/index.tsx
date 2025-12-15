@@ -1,15 +1,25 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ProjectSheet, type ProjectSheetData } from "@/app/sheet";
+import { ProjectSheet, type ProjectSheetData } from "@/components/sheet";
+import { useTranslation } from "@/translation/client";
 import Image from "next/image";
 import { useState } from "react";
 import ScrollStack, { ScrollStackItem } from "../ScrollStack";
 import { projects } from "./data";
 
 export default function Works() {
+  const { t } = useTranslation({ ns: "translation" });
+
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedProject, setSelectedProject] =
     useState<ProjectSheetData | null>(null);
+
+  const projectsWithText: ProjectSheetData[] = projects.map((p) => ({
+    ...p,
+    title: t(`home.works.projects.${p.id}.title`),
+    description: t(`home.works.projects.${p.id}.description`),
+  }));
 
   return (
     <>
@@ -19,55 +29,56 @@ export default function Works() {
         project={selectedProject}
       />
 
-      <section className="relative p-0">
-        <ScrollStack
-          header={
-            <div className="w-full max-w-349 mx-auto py-4">
-              <h2 id="work-title" className="text-lg font-semibold text-white">
-                Selected work
-              </h2>
-            </div>
-          }
-        >
-          {projects.map((project, index) => (
-            <ScrollStackItem
-              key={index}
-              itemClassName="cursor-pointer rounded-2xl border border-white/10 bg-gray-750 text-left shadow-[0_25px_80px_-30px_rgba(0,0,0,0.8)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white/20 rounded-[40px] overflow-hidden"
-            >
-              <button
-                type="button"
-                className="w-full text-left"
-                onClick={() => {
-                  setSelectedProject(project);
-                  setSheetOpen(true);
-                }}
+      {/* container igual ao restante (1396px) */}
+      <section id="selected-work" className="relative p-0">
+        <div className="mx-auto max-w-[1396px] pt-[33px] pb-6 max-[1413px]:px-4">
+          <ScrollStack
+            header={
+              <div className="w-full">
+                <h2
+                  id="work-title"
+                  className="text-[32px] font-semibold text-white"
+                >
+                  {t("home.works.title")}
+                </h2>
+              </div>
+            }
+          >
+            {projectsWithText.map((project, index) => (
+              <ScrollStackItem
+                key={index}
+                className="h-[90vh] cursor-pointer rounded-md bg-gray-750 text-left shadow-[0_25px_80px_-30px_rgba(0,0,0,0.8)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white/20 overflow-hidden"
               >
-                <div className="relative h-90 w-full bg-[#0f0f0f] sm:h-115 lg:h-158.25">
-                  <Image
+                <button
+                  type="button"
+                  className="w-full text-left"
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setSheetOpen(true);
+                  }}
+                >
+                  <img
                     src={project.image}
                     alt={project.title}
-                    fill
-                    sizes="(min-width: 1024px) 1100px, 100vw"
-                    className="object-cover object-top"
+                    className="aspect-video object-cover w-full"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-[#0b0b0b] to-transparent" />
-                </div>
 
-                <div className="flex flex-col gap-2 p-4 text-white/80">
-                  <span className="text-xs uppercase tracking-[0.2em] text-white/50">
-                    {project.year}
-                  </span>
-                  <h3 className="text-xl font-semibold text-white">
-                    {project.title}
-                  </h3>
-                  <p className="max-w-3xl text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-              </button>
-            </ScrollStackItem>
-          ))}
-        </ScrollStack>
+                  <div className="flex flex-col gap-2 p-4 sm:p-6 text-white/80">
+                    <span className="text-xs uppercase tracking-[0.2em] text-white/50">
+                      {project.year}
+                    </span>
+                    <h3 className="text-xl font-semibold text-white">
+                      {project.title}
+                    </h3>
+                    <p className="max-w-3xl text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+                </button>
+              </ScrollStackItem>
+            ))}
+          </ScrollStack>
+        </div>
       </section>
     </>
   );

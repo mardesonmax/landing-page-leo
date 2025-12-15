@@ -5,15 +5,15 @@ import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface ScrollStackItemProps {
-  itemClassName?: string;
+  className?: string;
   children: ReactNode;
 }
 
 export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
   children,
-  itemClassName = "",
+  className = "",
 }) => (
-  <div className={twMerge("shadow-[0_0_30px_rgba(0,0,0,0.1)]", itemClassName)}>
+  <div className={twMerge("shadow-[0_0_30px_rgba(0,0,0,0.1)]", className)}>
     {children}
   </div>
 );
@@ -290,7 +290,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
           </div>
         ) : null}
 
-        <div className="relative px-20" style={{ paddingTop: topPadding }}>
+        <div className="relative" style={{ paddingTop: topPadding }}>
           {items.map((child, i) => (
             <div
               key={i}
