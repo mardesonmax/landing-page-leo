@@ -3,7 +3,7 @@
 
 import { ProjectSheet, type ProjectSheetData } from "@/components/sheet";
 import { useTranslation } from "@/translation/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScrollStackMotion from "../ScrollStackMotion";
 import { projects } from "./data";
 
@@ -13,6 +13,15 @@ export default function Works() {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedProject, setSelectedProject] =
     useState<ProjectSheetData | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
 
   const projectsWithText: ProjectSheetData[] = projects.map((p) => ({
     ...p,
@@ -31,6 +40,7 @@ export default function Works() {
       <section id="selected-work" className="relative p-0">
         <div className="mx-auto max-w-349 pt-8.25 pb-6 max-[1413px]:px-4">
           <ScrollStackMotion
+            disabled={isMobile}
             header={
               <div className="w-full">
                 <h2 className="text-[32px] font-semibold text-white">

@@ -41,10 +41,8 @@ export default function Home() {
               {t("home.header.nav.projects")}
             </a>
 
-            <LanguageSelector />
-
             <a
-              className="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-semibold text-white transition hover:border-blue-500 hover:text-blue-400"
+              className="text-white/70 hover:text-white transition-colors text-base px-2"
               href="#contact"
             >
               {t("home.header.nav.contactMe")}
@@ -82,15 +80,12 @@ export default function Home() {
                     {t("home.header.nav.projects")}
                   </a>
                   <a
-                    className="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-semibold text-white transition hover:border-blue-500 hover:text-blue-400 text-base text-center mx-2"
+                    className="text-white/70 hover:text-white transition-colors text-base px-2"
                     href="#contact"
                     onClick={() => setMenuOpen(false)}
                   >
                     {t("home.header.nav.contactMe")}
                   </a>
-                  <div className="pt-4 px-2">
-                    <LanguageSelector />
-                  </div>
                 </nav>
               </SheetContent>
             </Sheet>

@@ -9,6 +9,9 @@ export interface ScrollStackMotionProps {
   className?: string;
   children: ReactNode;
 
+  /** desliga o efeito sticky/stack (útil em telas mobile) */
+  disabled?: boolean;
+
   header?: ReactNode;
   headerClassName?: string;
   headerGapPx?: number;
@@ -114,7 +117,7 @@ function Item({
   );
 }
 
-export default function ScrollStackMotion({
+function ScrollStackMotionEnabled({
   className,
   children,
 
@@ -246,5 +249,29 @@ export default function ScrollStackMotion({
         <div ref={endRef} className="h-px w-full" />
       </div>
     </div>
+  );
+}
+
+function ScrollStackMotionDisabled({
+  className,
+  children,
+  header,
+  headerClassName,
+}: ScrollStackMotionProps) {
+  return (
+    <div className={twMerge("relative w-full", className)}>
+      {header ? (
+        <div className={twMerge("w-full", headerClassName)}>{header}</div>
+      ) : null}
+      <div className="mt-6 flex flex-col gap-6">{children}</div>
+    </div>
+  );
+}
+
+export default function ScrollStackMotion(props: ScrollStackMotionProps) {
+  return props.disabled ? (
+    <ScrollStackMotionDisabled {...props} />
+  ) : (
+    <ScrollStackMotionEnabled {...props} />
   );
 }

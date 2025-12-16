@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { fallbackLng, headerName, Languages } from "@/translation/settings";
 import { dir } from "i18next";
 import "@/styles/globals.css";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -32,6 +33,7 @@ export default async function RootLayout({
     <html lang={lng} dir={dir(lng)}>
       <body className={`${poppins.className} ${poppins.variable} antialiased`}>
         {children}
+        <LanguageSelector />
       </body>
     </html>
   );
