@@ -18,11 +18,12 @@ export function SocialCard({
   className,
   bgImage = "/assets/img/bg-social.png",
 }: SocialCardProps) {
+  const isHttpUrl = /^https?:\/\//i.test(href);
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noreferrer"
+      target={isHttpUrl ? "_blank" : undefined}
+      rel={isHttpUrl ? "noreferrer" : undefined}
       className={cn(
         "group relative block h-full rounded-lg bg-[radial-gradient(80.38%_222.5%_at_-13.75%_-12.36%,#98F9FF_0%,rgba(255,255,255,0)_100%),radial-gradient(80.69%_208.78%_at_108.28%_112.58%,#EABFFF_0%,rgba(135,38,183,0)_100%)] p-[2px] transition hover:-translate-y-px",
         className

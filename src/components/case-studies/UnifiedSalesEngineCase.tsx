@@ -58,6 +58,19 @@ export default function UnifiedSalesEngineCase() {
   const { t } = useTranslation({ ns: "translation" });
   const base = "home.caseStudies.unified-sales-engine";
 
+  const renderStep = (text: string): React.ReactNode => {
+    const [head, ...rest] = text.split(" - ");
+    const tail = rest.join(" - ").trim();
+    return (
+      <>
+        <span className="text-gray-400 text-sm font-medium">{head}</span>
+        {tail ? (
+          <span className="text-gray-400 text-sm font-normal"> - {tail}</span>
+        ) : null}
+      </>
+    );
+  };
+
   // Acceptance Terms Data
   const acceptanceTermsData: AcceptanceTermsRow[] = [
     { metric: "Acceptance terms", month1: "874", month2: "814", month3: "689" },
@@ -130,7 +143,7 @@ export default function UnifiedSalesEngineCase() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 hover:bg-transparent hover:text-white/40"
+            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-transparent hover:text-white"
           >
             12/2022
           </Button>
@@ -156,7 +169,7 @@ export default function UnifiedSalesEngineCase() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 hover:bg-transparent hover:text-white/40"
+            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-transparent hover:text-white"
           >
             01/2023
           </Button>
@@ -182,7 +195,7 @@ export default function UnifiedSalesEngineCase() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 hover:bg-transparent hover:text-white/40"
+            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-transparent hover:text-white"
           >
             02/2023
           </Button>
@@ -242,7 +255,7 @@ export default function UnifiedSalesEngineCase() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 hover:bg-transparent hover:text-white/40"
+            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-transparent hover:text-white"
           >
             Dev time (hours)
           </Button>
@@ -261,7 +274,7 @@ export default function UnifiedSalesEngineCase() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 hover:bg-transparent hover:text-white/40"
+            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-transparent hover:text-white"
           >
             QA time (hours)
           </Button>
@@ -280,7 +293,7 @@ export default function UnifiedSalesEngineCase() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 hover:bg-transparent hover:text-white/40"
+            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-transparent hover:text-white"
           >
             Design time (hour)
           </Button>
@@ -299,7 +312,7 @@ export default function UnifiedSalesEngineCase() {
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 hover:bg-transparent hover:text-white/40"
+            className="h-auto p-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-white hover:bg-transparent hover:text-white"
           >
             Total (hour)
           </Button>
@@ -343,8 +356,8 @@ export default function UnifiedSalesEngineCase() {
 
   return (
     <div className="text-white">
-      <div className="mx-auto w-full max-w-[1398px] px-4 pt-10">
-        <h1 className="text-[56px] font-bold leading-normal text-white">
+      <div className="mx-auto w-full max-w-[1398px] px-4 xl:p-0 pt-10">
+        <h1 className="lg:text-[56px] text-[32px] font-bold leading-normal text-white">
           {t(`${base}.hero.title`)}
         </h1>
 
@@ -386,7 +399,7 @@ export default function UnifiedSalesEngineCase() {
               <div className="text-[12px] font-medium leading-normal text-[#BFC4CE]">
                 {item.label}
               </div>
-              <div className="text-[14px] font-semibold leading-normal text-white">
+              <div className="text-sm font-semibold leading-normal text-white">
                 {item.value}
               </div>
             </div>
@@ -410,11 +423,11 @@ export default function UnifiedSalesEngineCase() {
       </div>
 
       {/* Case content */}
-      <div className=" bg-gray-750 py-12">
-        <div className="mx-auto w-full max-w-[1398px] space-y-14 px-4 ">
+      <div className=" bg-gray-750">
+        <div className="mx-auto w-full max-w-[1398px] px-4 lg:p-0">
           {/* Overview */}
-          <section className="space-y-6">
-            <h2 className="py-[17px] text-[32px] font-semibold leading-normal text-white">
+          <section className="">
+            <h2 className="py-4 text-[32px] font-semibold leading-normal text-white">
               {t(`${base}.sections.overview.title`)}
             </h2>
             <div className="space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
@@ -425,26 +438,40 @@ export default function UnifiedSalesEngineCase() {
             </div>
           </section>
           {/* AS-IS */}
-          <section className="space-y-6">
-            <h2 className="py-[17px] text-[32px] font-semibold leading-normal text-white">
+          <section className="mt-4">
+            <h2 className="py-4 text-[32px] font-semibold leading-normal text-white">
               {t(`${base}.sections.asIs.title`)}
             </h2>
 
             <div className="space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
-              <p>{t(`${base}.sections.asIs.p1`)}</p>
-              <p>{t(`${base}.sections.asIs.l1`)}</p>
-              <p>{t(`${base}.sections.asIs.l2`)}</p>
-              <p>{t(`${base}.sections.asIs.l3`)}</p>
-              <p>{t(`${base}.sections.asIs.p2`)}</p>
-              <p>{t(`${base}.sections.asIs.p3`)}</p>
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.asIs.p1`)}
+              </p>
+              <ol className="list-decimal list-inside pl-2">
+                <li className="text-sm font-normal text-gray-400">
+                  {t(`${base}.sections.asIs.l1`)}
+                </li>
+                <li className="text-sm font-normal text-gray-400">
+                  {t(`${base}.sections.asIs.l2`)}
+                </li>
+                <li className="text-sm font-normal text-gray-400">
+                  {t(`${base}.sections.asIs.l3`)}
+                </li>
+              </ol>
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.asIs.p2`)}
+              </p>
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.asIs.p3`)}
+              </p>
             </div>
 
             {/* Card: Using the software */}
-            <div className="mx-auto w-full max-w-[1160px] rounded-2xl bg-gray-800 p-12">
+            <div className="mx-auto w-full max-w-[1160px] rounded-2xl bg-gray-800 p-12 mt-6">
               <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-6">
                 <div className="flex flex-col">
                   <figure>
-                    <div className="relative h-[236px] w-full overflow-hidden rounded-xl bg-gray-850 lg:w-[401px]">
+                    <div className="relative h-[236px] overflow-hidden bg-gray-850 lg:w-[401px]">
                       <Image
                         src="/assets/img/using-soft.png"
                         alt={t(`${base}.sections.asIs.card.imageAlt`)}
@@ -452,45 +479,69 @@ export default function UnifiedSalesEngineCase() {
                         className="object-cover"
                       />
                     </div>
+                    <figcaption className="mt-2 text-center text-[10px] font-medium text-[#BFC4CE]">
+                      {t(`${base}.sections.asIs.card.caption`)}
+                    </figcaption>
                   </figure>
-                  <div className="mt-2 text-center text-[12px] font-medium leading-normal text-[#BFC4CE]">
-                    {t(`${base}.sections.asIs.card.caption`)}
-                  </div>
                 </div>
 
-                <div className="flex flex-1 flex-col">
+                <div className="flex flex-1 flex-col ">
                   <div className="text-[24px] font-semibold leading-normal text-white">
                     {t(`${base}.sections.asIs.card.title`)}
                   </div>
-                  <div className="mt-4 space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
-                    <p>{t(`${base}.sections.asIs.card.steps.p1`)}</p>
-                    <p>{t(`${base}.sections.asIs.card.steps.p2`)}</p>
-                    <p>{t(`${base}.sections.asIs.card.steps.p3`)}</p>
-                    <p>{t(`${base}.sections.asIs.card.steps.p4`)}</p>
-                    <p>{t(`${base}.sections.asIs.card.steps.p5`)}</p>
-                    <p>{t(`${base}.sections.asIs.card.steps.p6`)}</p>
-                  </div>
+                  <ol className="mt-4 text-sm font-medium leading-relaxed text-[#BFC4CE] list-decimal list-inside">
+                    <li>
+                      {renderStep(t(`${base}.sections.asIs.card.steps.p1`))}
+                    </li>
+                    <li>
+                      {renderStep(t(`${base}.sections.asIs.card.steps.p2`))}
+                    </li>
+                    <li>
+                      {renderStep(t(`${base}.sections.asIs.card.steps.p3`))}
+                    </li>
+                    <li>
+                      {renderStep(t(`${base}.sections.asIs.card.steps.p4`))}
+                    </li>
+                    <li>
+                      {renderStep(t(`${base}.sections.asIs.card.steps.p5`))}
+                    </li>
+                    <li>
+                      {renderStep(t(`${base}.sections.asIs.card.steps.p6`))}
+                    </li>
+                  </ol>
                 </div>
               </div>
             </div>
           </section>
           {/* Initial research */}
-          <section className="space-y-6">
-            <h2 className="py-[17px] text-[32px] font-semibold leading-normal text-white">
+          <section className="">
+            <h2 className="py-[16px] text-[32px] font-semibold leading-normal text-white">
               {t(`${base}.sections.initialResearch.title`)}
             </h2>
 
             <div className="space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
-              <p>{t(`${base}.sections.initialResearch.p1`)}</p>
-              <p>{t(`${base}.sections.initialResearch.p2`)}</p>
-              <p>{t(`${base}.sections.initialResearch.p3`)}</p>
-              <p>{t(`${base}.sections.initialResearch.p4`)}</p>
-              <p>{t(`${base}.sections.initialResearch.p5`)}</p>
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.initialResearch.p1`)}
+              </p>
+              <div className="pl-4">
+                <p className="text-sm font-normal text-gray-400">
+                  {t(`${base}.sections.initialResearch.p2`)}
+                </p>
+                <p className="text-sm font-normal text-gray-400">
+                  {t(`${base}.sections.initialResearch.p3`)}
+                </p>
+                <p className="text-sm font-normal text-gray-400">
+                  {t(`${base}.sections.initialResearch.p4`)}
+                </p>
+              </div>
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.initialResearch.p5`)}
+              </p>
             </div>
 
             {/* Acceptance Terms Table */}
-            <div className="mx-auto">
-              <figure className="overflow-hidden rounded-2xl bg-gray-800 p-4 max-w-[887px] mx-auto">
+            <div className="mx-auto mt-6">
+              <figure className="overflow-hidden p-4 max-w-[887px] mx-auto">
                 <div className="overflow-hidden rounded-md border border-white/10 ">
                   <Table>
                     <TableHeader>
@@ -507,7 +558,7 @@ export default function UnifiedSalesEngineCase() {
                               return (
                                 <TableHead
                                   key={header.id}
-                                  className={`text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 ${
+                                  className={`text-[10px] font-semibold uppercase text-white bg-gray-800 ${
                                     isLeftAligned ? "" : "text-center"
                                   }`}
                                 >
@@ -525,21 +576,25 @@ export default function UnifiedSalesEngineCase() {
                     </TableHeader>
                     <TableBody>
                       {acceptanceTermsTable.getRowModel().rows?.length ? (
-                        acceptanceTermsTable.getRowModel().rows.map((row) => (
-                          <TableRow
-                            key={row.id}
-                            className="border-white/10 hover:bg-white/5"
-                          >
-                            {row.getVisibleCells().map((cell) => (
-                              <TableCell key={cell.id} className="p-4">
-                                {flexRender(
-                                  cell.column.columnDef.cell,
-                                  cell.getContext()
-                                )}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))
+                        acceptanceTermsTable
+                          .getRowModel()
+                          .rows.map((row, index) => (
+                            <TableRow
+                              key={row.id}
+                              className={`border-white/10 hover:bg-white/5 ${
+                                index % 2 === 1 ? "bg-gray-800/50" : ""
+                              }`}
+                            >
+                              {row.getVisibleCells().map((cell) => (
+                                <TableCell key={cell.id} className="p-4">
+                                  {flexRender(
+                                    cell.column.columnDef.cell,
+                                    cell.getContext()
+                                  )}
+                                </TableCell>
+                              ))}
+                            </TableRow>
+                          ))
                       ) : (
                         <TableRow>
                           <TableCell
@@ -553,7 +608,7 @@ export default function UnifiedSalesEngineCase() {
                     </TableBody>
                   </Table>
                 </div>
-                <figcaption className="px-4 py-3 text-center text-[12px] font-medium leading-normal text-[#BFC4CE]">
+                <figcaption className="px-4 pt-2 text-center text-[12px] font-medium leading-normal text-[#BFC4CE]">
                   {t(
                     `${base}.sections.initialResearch.images.acceptanceTerms.caption`
                   )}
@@ -563,13 +618,13 @@ export default function UnifiedSalesEngineCase() {
 
             {/* Delivery Metrics Table */}
             <div className="">
-              <p className="mb-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
+              <p className="mb-4 text-sm font-normal text-gray-400">
                 {t(
                   `${base}.sections.initialResearch.images.deliveryMetrics.description`
                 )}
               </p>
 
-              <figure className="overflow-hidden rounded-2xl bg-gray-800 p-4 max-w-[887px] mx-auto">
+              <figure className="overflow-hidden px-4 max-w-[887px] mx-auto">
                 <div className="overflow-hidden rounded-md border border-white/10">
                   <Table>
                     <TableHeader>
@@ -586,7 +641,7 @@ export default function UnifiedSalesEngineCase() {
                               return (
                                 <TableHead
                                   key={header.id}
-                                  className={`text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 ${
+                                  className={`text-[10px] font-semibold uppercase text-white bg-gray-800 ${
                                     isLeftAligned ? "" : "text-center"
                                   }`}
                                 >
@@ -604,21 +659,25 @@ export default function UnifiedSalesEngineCase() {
                     </TableHeader>
                     <TableBody>
                       {deliveryMetricsTable.getRowModel().rows?.length ? (
-                        deliveryMetricsTable.getRowModel().rows.map((row) => (
-                          <TableRow
-                            key={row.id}
-                            className="border-white/10 hover:bg-white/5"
-                          >
-                            {row.getVisibleCells().map((cell) => (
-                              <TableCell key={cell.id} className="p-4">
-                                {flexRender(
-                                  cell.column.columnDef.cell,
-                                  cell.getContext()
-                                )}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))
+                        deliveryMetricsTable
+                          .getRowModel()
+                          .rows.map((row, index) => (
+                            <TableRow
+                              key={row.id}
+                              className={`border-white/10 hover:bg-white/5 ${
+                                index % 2 === 1 ? "bg-gray-800/50" : ""
+                              }`}
+                            >
+                              {row.getVisibleCells().map((cell) => (
+                                <TableCell key={cell.id} className="p-4">
+                                  {flexRender(
+                                    cell.column.columnDef.cell,
+                                    cell.getContext()
+                                  )}
+                                </TableCell>
+                              ))}
+                            </TableRow>
+                          ))
                       ) : (
                         <TableRow>
                           <TableCell
@@ -632,7 +691,7 @@ export default function UnifiedSalesEngineCase() {
                     </TableBody>
                   </Table>
                 </div>
-                <figcaption className="px-4 py-3 text-center text-[12px] font-medium leading-normal text-[#BFC4CE]">
+                <figcaption className="pt-2 text-center text-[12px] font-medium leading-normal text-[#BFC4CE]">
                   {t(
                     `${base}.sections.initialResearch.images.deliveryMetrics.caption`
                   )}
@@ -642,15 +701,17 @@ export default function UnifiedSalesEngineCase() {
           </section>
 
           {/* Understanding */}
-          <section className="space-y-6">
-            <h2 className="py-[17px] text-[32px] font-semibold leading-normal text-white">
+          <section className="">
+            <h2 className="py-[16px] text-[32px] font-semibold leading-normal text-white">
               {t(`${base}.sections.understanding.title`)}
             </h2>
-            <div className="space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
-              <p>{t(`${base}.sections.understanding.p1`)}</p>
+            <div className="">
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.understanding.p1`)}
+              </p>
             </div>
 
-            <figure className="overflow-hidden max-w-[921px] mx-auto bg-gray-800">
+            <figure className="overflow-hidden py-4 max-w-[921px] mx-auto ">
               <Image
                 src="/assets/img/case-sales-journey.png"
                 alt={t(`${base}.sections.understanding.journeyAlt`)}
@@ -659,41 +720,57 @@ export default function UnifiedSalesEngineCase() {
                 className="h-auto w-full object-cover"
               />
             </figure>
-            <div className="space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
-              <p>{t(`${base}.sections.understanding.p2`)}</p>
+
+            <div className="">
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.understanding.p2`)}
+              </p>
             </div>
           </section>
           {/* Panel */}
-          <section className="space-y-6">
-            <div className="mx-auto w-full max-w-[1160px] rounded-2xl bg-gray-800 p-12">
-              <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
-                <div className="space-y-4">
-                  <div className="text-[24px] font-semibold leading-normal text-white">
+          <section className="space-y-6 mt-4">
+            <div className="mx-auto w-full max-w-[1160px] rounded-2xl bg-gray-800 p-4 sm:p-8 lg:p-12">
+              <div className="grid gap-6 lg:gap-10 lg:grid-cols-[1fr_360px]">
+                <div className="flex flex-col gap-4">
+                  <div className="text-[20px] sm:text-[24px] font-semibold leading-normal text-white">
                     {t(`${base}.sections.panel.title`)}
                   </div>
                   <div className="space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
-                    <p>{t(`${base}.sections.panel.p1`)}</p>
-                    <p>{t(`${base}.sections.panel.p2`)}</p>
-                    <p>{t(`${base}.sections.panel.p3`)}</p>
-                    <p>{t(`${base}.sections.panel.p4`)}</p>
-                    <p>{t(`${base}.sections.panel.p5`)}</p>
+                    <p className="text-sm font-normal text-gray-400">
+                      {t(`${base}.sections.panel.p1`)}
+                    </p>
+                    <p className="text-sm font-normal text-gray-400">
+                      {t(`${base}.sections.panel.p2`)}
+                    </p>
+                    <p className="text-sm font-normal text-gray-400">
+                      {t(`${base}.sections.panel.p3`)}
+                    </p>
+                    <p className="text-sm font-normal text-gray-400">
+                      {t(`${base}.sections.panel.p4`)}
+                    </p>
+                    <p className="text-sm font-normal text-gray-400">
+                      {t(`${base}.sections.panel.p5`)}
+                    </p>
                   </div>
                 </div>
 
-                <aside className="rounded-lg bg-gray-750 px-4 pb-4 pt-2">
+                <aside className="rounded-lg bg-gray-750 px-4 pb-4 pt-2 w-full lg:w-auto">
                   <Card className="border-0 bg-transparent shadow-none">
                     <CardHeader className="p-0 pb-2.5">
-                      <CardTitle className="text-[14px] font-bold leading-[1.5em] text-[#FE5F58]">
+                      <CardTitle className="text-[12px] sm:text-[13.5px] font-bold text-[#FE5F58]">
                         {t(`${base}.sections.panel.asideTitle`)}
                       </CardTitle>
-                      <CardDescription className="mt-0 text-[14px] font-normal leading-[1.302em] text-[#BFC4CE]">
+                      <CardDescription className="mt-0 text-[10px] sm:text-[11px] font-normal leading-[1.302em] text-[#BFC4CE]">
                         {t(`${base}.sections.panel.asideDescription`)}
                       </CardDescription>
+                      <div className="mt-2 text-[11px] sm:text-[12px] font-normal leading-[1.302em] text-[#BFC4CE]">
+                        {t(`${base}.sections.panel.asideAmount`)}
+                      </div>
                     </CardHeader>
                     <CardContent className="p-0">
                       <ChartContainer
                         config={financialLeakageChartConfig}
-                        className="h-[340px] w-full"
+                        className="h-[280px] sm:h-[320px] lg:h-[340px] w-full"
                       >
                         <BarChart
                           accessibilityLayer
@@ -753,43 +830,53 @@ export default function UnifiedSalesEngineCase() {
             </div>
           </section>
           {/* Solution */}
-          <section className="space-y-6">
-            <h2 className="py-[17px] text-[32px] font-semibold leading-normal text-white">
+          <section className="">
+            <h2 className="py-[16px] text-[24px] lg:text-[32px] font-semibold leading-normal text-white">
               {t(`${base}.sections.solution.title`)}
             </h2>
 
-            <div className="space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
-              <p>{t(`${base}.sections.solution.p1`)}</p>
-              <p>{t(`${base}.sections.solution.p2`)}</p>
-              <p>{t(`${base}.sections.solution.p3`)}</p>
-              <p>{t(`${base}.sections.solution.p4`)}</p>
+            <div className="space-y-4 leading-normal">
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.solution.p1`)}
+              </p>
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.solution.p2`)}
+              </p>
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.solution.p3`)}
+              </p>
+              <p className="text-sm font-normal text-gray-400">
+                {t(`${base}.sections.solution.p4`)}
+              </p>
             </div>
 
-            <div className="mx-auto max-w-[1160px]">
+            <div className="mx-auto max-w-[1160px] mt-2">
               <div className="grid gap-6 lg:grid-cols-2">
-                <figure className="overflow-hidden rounded-2xl bg-gray-800">
-                  <Image
-                    src="/assets/img/case-new-software.png"
-                    alt={t(`${base}.sections.solution.images.newSoftware.alt`)}
-                    width={1200}
-                    height={900}
-                    className="h-auto w-full object-cover"
-                  />
+                <figure className="overflow-hidden ">
+                  <div className="relative w-full aspect-video">
+                    <Image
+                      src="/assets/img/case-new-software.png"
+                      alt={t(
+                        `${base}.sections.solution.images.newSoftware.alt`
+                      )}
+                      fill
+                    />
+                  </div>
                   <figcaption className="px-4 py-3 text-center text-[12px] font-medium leading-normal text-[#BFC4CE]">
                     {t(`${base}.sections.solution.images.newSoftware.caption`)}
                   </figcaption>
                 </figure>
 
-                <figure className="overflow-hidden rounded-2xl bg-gray-800">
-                  <Image
-                    src="/assets/img/case-portfolio-manager.png"
-                    alt={t(
-                      `${base}.sections.solution.images.portfolioManager.alt`
-                    )}
-                    width={1200}
-                    height={900}
-                    className="h-auto w-full object-cover"
-                  />
+                <figure className="overflow-hidden">
+                  <div className="relative w-full aspect-video">
+                    <Image
+                      src="/assets/img/case-portfolio-manager.png"
+                      alt={t(
+                        `${base}.sections.solution.images.portfolioManager.alt`
+                      )}
+                      fill
+                    />
+                  </div>
                   <figcaption className="px-4 py-3 text-center text-[12px] font-medium leading-normal text-[#BFC4CE]">
                     {t(
                       `${base}.sections.solution.images.portfolioManager.caption`
@@ -800,12 +887,12 @@ export default function UnifiedSalesEngineCase() {
             </div>
           </section>
           {/* Conclusion */}
-          <section className="space-y-6">
-            <h2 className="py-[17px] text-[32px] font-semibold leading-normal text-white">
+          <section className="pb-6">
+            <h2 className="py-[16px] text-[24px] lg:text-[32px] font-semibold leading-normal text-white">
               {t(`${base}.sections.conclusion.title`)}
             </h2>
 
-            <div className="space-y-4 text-[12px] font-medium leading-normal text-[#BFC4CE]">
+            <div className="text-sm font-medium leading-normal text-[#BFC4CE]">
               <p>{t(`${base}.sections.conclusion.p1`)}</p>
             </div>
           </section>

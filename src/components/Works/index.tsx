@@ -43,7 +43,7 @@ export default function Works() {
             disabled={isMobile}
             header={
               <div className="w-full">
-                <h2 className="text-[32px] font-semibold text-white">
+                <h2 className="text-[32px] max-lg:text-2xl font-semibold text-white">
                   {t("home.works.title")}
                 </h2>
               </div>

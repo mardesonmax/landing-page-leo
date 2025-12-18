@@ -1,7 +1,6 @@
 "use client";
 
 import { HeroCard } from "@/components/HeroCard";
-import { LanguageSelector } from "@/components/LanguageSelector";
 import { SocialCard } from "@/components/SocialCard";
 import Works from "@/components/Works";
 import { useTranslation } from "@/translation/client";
@@ -9,8 +8,8 @@ import Image from "next/image";
 import {
   FaLinkedinIn,
   FaRegArrowAltCircleDown,
-  FaWhatsapp,
   FaBars,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { useState } from "react";
@@ -42,7 +41,7 @@ export default function Home() {
             </a>
 
             <a
-              className="text-white/70 hover:text-white transition-colors text-base px-2"
+              className="text-white/70 hover:text-white transition-colors text-base"
               href="#contact"
             >
               {t("home.header.nav.contactMe")}
@@ -62,7 +61,7 @@ export default function Home() {
               </SheetTrigger>
               <SheetContent
                 side="left"
-                className="bg-[#050505] border-white/10 w-[300px] sm:w-[400px] p-6"
+                className="bg-[#050505] border-white/10 !w-full max-w-none p-6"
               >
                 <nav className="flex flex-col gap-6 pt-8">
                   <a
@@ -95,7 +94,7 @@ export default function Home() {
         <div className="w-full">
           <section
             aria-labelledby="hero-title"
-            className="flex flex-col justify-center min-h-[calc(100vh-86px)] max-w-[1396px] max-[1411px]:px-4 mx-auto"
+            className="relative flex flex-col justify-center min-h-[calc(100vh-75px)] max-w-[1396px] max-[1411px]:px-4 mx-auto"
           >
             <HeroCard>
               <div className="flex flex-col gap-6 lg:flex-row">
@@ -147,12 +146,12 @@ export default function Home() {
               </div>
             </HeroCard>
 
-            <div className="mt-[102px] flex justify-center">
+            <div className="flex justify-center mt-8 lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 lg:mt-0">
               <div
                 aria-label={t("home.hero.scrollHintAriaLabel")}
-                className="motion-safe:animate-bounce [animation-duration:1.8s] flex h-10 w-10 items-center justify-center rounded-full text-white/60 will-change-transform"
+                className="motion-safe:animate-bounce [animation-duration:1.8s] flex h-10 w-10 lg:h-12 lg:w-12 items-center justify-center rounded-full text-white/60 will-change-transform"
               >
-                <FaRegArrowAltCircleDown size={32} />
+                <FaRegArrowAltCircleDown className="h-8 w-8 lg:h-8 lg:w-8" />
               </div>
             </div>
           </section>
@@ -176,21 +175,21 @@ export default function Home() {
 
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <SocialCard
-                  href="https://www.linkedin.com/in/leonardospessanha"
+                  href="mailto:leonardosilvapessanha@gmail.com"
                   title={t("home.contact.cards.email.title")}
-                  subtitle="leonardospessanha@gmail.com"
+                  subtitle="leonardosilvapessanha@gmail.com"
                   icon={MdOutlineMailOutline}
                 />
                 <SocialCard
-                  href="https://www.linkedin.com/in/leonardospessanha"
+                  href="https://wa.me/5571981950677"
                   title={t("home.contact.cards.phone.title")}
-                  subtitle="+55 71 99185-0677"
+                  subtitle="+55 71 98195-0677"
                   icon={FaWhatsapp}
                 />
                 <SocialCard
-                  href="https://www.linkedin.com/in/leonardospessanha"
+                  href="https://www.linkedin.com/in/leonardopessanha-/"
                   title={t("home.contact.cards.linkedin.title")}
-                  subtitle="www.linkedin.com/in/leonardospessanha-"
+                  subtitle="www.linkedin.com/in/leonardopessanha-"
                   icon={FaLinkedinIn}
                 />
               </div>

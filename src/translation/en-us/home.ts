@@ -131,7 +131,8 @@ export const home: (typeof ptBR)["translation"]["home"] = {
           title: "Connecting Behavior and Data",
           asideTitle: "Financial Leakage Breakdown (3-Month Period)",
           asideDescription:
-            "Distribution of revenue lost through excessive discounts, waived implementation fees, and maintence. Amount R$ 936.180,00.",
+            "Distribution of revenue lost through excessive discounts, waived implementation fees, and maintence.",
+          asideAmount: "Amount R$ 936.180,00.",
           asideAlt: "Financial leakage breakdown chart",
           chartLegend: {
             waivedFees: "waived implementation fees (67.3%)",

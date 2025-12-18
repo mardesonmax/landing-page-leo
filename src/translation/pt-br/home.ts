@@ -140,7 +140,8 @@ export const home = {
           title: "Conectando comportamento e dados",
           asideTitle: "Detalhamento do vazamento financeiro (3 meses)",
           asideDescription:
-            "Distribuição de receita perdida por descontos excessivos, taxas de implementação dispensadas e manutenção. Total R$ 936.180,00.",
+            "Distribuição de receita perdida por descontos excessivos, taxas de implementação dispensadas e manutenção.",
+          asideAmount: "Total R$ 936.180,00.",
           asideAlt: "Gráfico de detalhamento do vazamento financeiro",
           chartLegend: {
             waivedFees: "taxas de implementação dispensadas (67,3%)",

@@ -31,7 +31,7 @@ function SheetBody({
 
   return (
     <div
-      className="h-full overflow-y-auto"
+      className="h-full overflow-y-auto relative"
       onScroll={(e) => {
         const el = e.currentTarget;
         const next = el.scrollTop > 80;
@@ -39,10 +39,26 @@ function SheetBody({
         onStickyHeaderChange?.(next);
       }}
     >
+      {/* Blur acima do header sempre visível */}
+      <div className="absolute top-0 left-0 right-0 z-30 h-20 pointer-events-none bg-linear-to-b from-gray-850 via-gray-850/80 to-transparent" />
+
+      {/* X sempre visível no canto direito */}
+      <div className="absolute top-4 right-4 z-40 pointer-events-auto">
+        <SheetClose asChild>
+          <button
+            type="button"
+            className="flex items-center cursor-pointer justify-center w-8 h-8 rounded-full bg-[#FF6B6B] hover:bg-[#FF5252] transition-colors disabled:pointer-events-none"
+            aria-label="Close"
+          >
+            <XIcon className="size-4 text-black font-bold" strokeWidth={3} />
+          </button>
+        </SheetClose>
+      </div>
+
       {/* Sticky header appears only after scroll (old behavior) */}
       <div
         className={[
-          "sticky top-0 z-20 border-b border-white/10 bg-gray-850/85 backdrop-blur-xl transition-opacity duration-200",
+          "sticky top-0 z-20 border-b border-white/10 bg-gray-850/85 transition-opacity duration-200",
           showStickyHeader ? "opacity-100" : "pointer-events-none opacity-0",
         ].join(" ")}
       >
@@ -54,14 +70,17 @@ function SheetBody({
 
         {/* X no mesmo canto do X padrão */}
         {showStickyHeader ? (
-          <div className="pointer-events-auto absolute right-4 top-4">
+          <div className="pointer-events-auto absolute right-4 top-[12px]">
             <SheetClose asChild>
               <button
                 type="button"
-                className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none"
+                className="flex items-center cursor-pointer justify-center w-8 h-8 rounded-full bg-[#FF6B6B] hover:bg-[#FF5252] transition-colors disabled:pointer-events-none"
                 aria-label="Close"
               >
-                <XIcon className="size-4" />
+                <XIcon
+                  className="size-4 text-black font-bold"
+                  strokeWidth={3}
+                />
               </button>
             </SheetClose>
           </div>
